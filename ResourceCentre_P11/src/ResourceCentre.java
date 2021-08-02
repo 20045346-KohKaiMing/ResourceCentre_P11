@@ -204,9 +204,11 @@ public class ResourceCentre {
 		for (int i = 0; i < camcorderList.size(); i++) {
 			
 			String assetTag = camcorderList.get(i).getAssetTag();
+			Boolean isAvailable = camcorderList.get(i).getIsAvailable();
 			
 			if (tag.equalsIgnoreCase(assetTag)				
-					&& camcorderList.get(i).getIsAvailable() == true) {
+					&& isAvailable == true) {
+				
 				
 				camcorderList.get(i).setIsAvailable(false);
 				camcorderList.get(i).setDueDate(dueDate);
@@ -237,10 +239,10 @@ public class ResourceCentre {
 
 		for (int i = 0; i < chromebookList.size(); i++) {
 			String assetTag = chromebookList.get(i).getAssetTag();
+			Boolean isAvailable = chromebookList.get(i).getIsAvailable();
 			
 			if (tag.equalsIgnoreCase(assetTag)
-					
-					&& chromebookList.get(i).getIsAvailable() == true) {
+					&& isAvailable == true) {
 				
 				chromebookList.get(i).setIsAvailable(false);
 				chromebookList.get(i).setDueDate(dueDate);
