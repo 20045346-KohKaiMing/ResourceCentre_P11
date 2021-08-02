@@ -37,12 +37,12 @@ public class ResourceCentre {
 				if (itemType == 1) {
 					// Add a camcorder
 					Camcorder cc = inputCamcorder();
-					ResourceCentre.addCamcorder(camcorderList, cc);
+					ResourceCentre.addNewCamcorder(camcorderList, cc);
 
 				} else if (itemType == 2) {
 					// Add Chromebook
 					Chromebook cb = inputChromebook();
-					ResourceCentre.addChromebook(chromebookList, cb);
+					ResourceCentre.addNewChromebook(chromebookList, cb);
 
 				} else {
 					System.out.println("Invalid type");
@@ -175,7 +175,7 @@ public class ResourceCentre {
 		return cc;
 		
 	}
-	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
+	public static void addNewCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
 		
 		camcorderList.add(cc);
 		System.out.println("Camcorder added");
@@ -190,7 +190,7 @@ public class ResourceCentre {
 		return cb;
 		
 	}	
-	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
+	public static void addNewChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 
 		chromebookList.add(cb);
 		System.out.println("Chromebook added");

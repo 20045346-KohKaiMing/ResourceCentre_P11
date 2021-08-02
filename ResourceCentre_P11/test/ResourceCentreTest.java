@@ -38,13 +38,13 @@ public class ResourceCentreTest {
 		assertNotNull("Check if there is valid Camcorder arraylist to add to", camcorderList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		ResourceCentre.addCamcorder(camcorderList, cc1);
+		ResourceCentre.addNewCamcorder(camcorderList, cc1);
 		assertEquals("Check that Camcorder arraylist size is 1", 1, camcorderList.size());
 		assertSame("Check that Camcorder is added", cc1, camcorderList.get(0));
 		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
-		ResourceCentre.addCamcorder(camcorderList, cc2);
+		ResourceCentre.addNewCamcorder(camcorderList, cc2);
 		assertEquals("Check that Camcorder arraylist size is 2", 2, camcorderList.size());
 		assertSame("Check that Camcorder is added", cc2, camcorderList.get(1));
 	}
@@ -55,13 +55,13 @@ public class ResourceCentreTest {
 		
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		ResourceCentre.addChromebook(chromebookList, cb1);		
+		ResourceCentre.addNewChromebook(chromebookList, cb1);		
 		assertEquals("Test that Chromebook arraylist size is 1", 1, chromebookList.size());
 		assertSame("Test that Chromebook is added", cb1, chromebookList.get(0));
 		
 		//Add another item. test The size of the list is 2? - normal
 		//The item just added is as same as the second item of the list
-		ResourceCentre.addChromebook(chromebookList, cb2);
+		ResourceCentre.addNewChromebook(chromebookList, cb2);
 		assertEquals("Test that Chromebook arraylist size is 2", 2, chromebookList.size());
 		assertSame("Test that Chromebook is added", cb2, chromebookList.get(1));
 	}
@@ -77,8 +77,8 @@ public class ResourceCentreTest {
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		ResourceCentre.addCamcorder(camcorderList, cc1);
-		ResourceCentre.addCamcorder(camcorderList, cc2);
+		ResourceCentre.addNewCamcorder(camcorderList, cc1);
+		ResourceCentre.addNewCamcorder(camcorderList, cc2);
 		assertEquals("Test that Camcorder arraylist size is 2", 2, camcorderList.size());
 		
 		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
@@ -101,8 +101,8 @@ public class ResourceCentreTest {
 		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allChrombook);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		ResourceCentre.addChromebook(chromebookList, cb1);
-		ResourceCentre.addChromebook(chromebookList, cb2);
+		ResourceCentre.addNewChromebook(chromebookList, cb1);
+		ResourceCentre.addNewChromebook(chromebookList, cb2);
 		assertEquals("Test that chromebook arraylist size is 2", 2, chromebookList.size());
 		
 		//test if the expected output string same as the list of chromebooks retrieved from the SourceCentre	
@@ -117,7 +117,7 @@ public class ResourceCentreTest {
 		//boundary
 		assertNotNull("test if there is valid Camcorder arraylist to loan from", camcorderList);
 		
-		ResourceCentre.addCamcorder(camcorderList, cc1);
+		ResourceCentre.addNewCamcorder(camcorderList, cc1);
 		// normal
 		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
 		assertTrue("Test if an available item is ok to loan?", ok);
@@ -125,7 +125,7 @@ public class ResourceCentreTest {
 		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "8-8-2020" );
 		assertFalse("Test if an same item is NOT ok to loan again?", ok);	
 		//error condition
-		ResourceCentre.addCamcorder(camcorderList, cc2);	
+		ResourceCentre.addNewCamcorder(camcorderList, cc2);	
 		cc2.setIsAvailable(false);
 		ok = ResourceCentre.doLoanCamcorder(camcorderList, "CC0012", "8-8-2020" );
 		assertFalse("Test that un-available item is NOT ok to loan?", ok);
@@ -139,7 +139,7 @@ public class ResourceCentreTest {
 	public void doLoanChromebookTest() {
 		//boundary
 		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
-		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addNewChromebook(chromebookList, cb1);
 		//normal
 		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
 		assertTrue("Test if an available item is ok to loan?", ok);		
@@ -147,7 +147,7 @@ public class ResourceCentreTest {
 		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
 		assertFalse("Test if the same item is NOT ok to loan again?", ok);	
 		//error
-		ResourceCentre.addChromebook(chromebookList, cb2);
+		ResourceCentre.addNewChromebook(chromebookList, cb2);
 		cb2.setIsAvailable(false);
 		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012", "8-8-2020" );
 		assertFalse("Test that un-available item is NOT ok to loan?", ok);
@@ -161,12 +161,12 @@ public class ResourceCentreTest {
 	public void doReturnCamcorderTest() {
 		//boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
-		ResourceCentre.addCamcorder(camcorderList, cc1);
+		ResourceCentre.addNewCamcorder(camcorderList, cc1);
 		//error
 		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
 		assertFalse("Test if available camcorder CC0011 is returned -false?", isReturned);		
 		//normal
-		ResourceCentre.addCamcorder(camcorderList, cc2);
+		ResourceCentre.addNewCamcorder(camcorderList, cc2);
 		cc2.setIsAvailable(false);
 		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
 		assertTrue("Test if loaned out amcorder CC0012 is returned- true", isReturned);
