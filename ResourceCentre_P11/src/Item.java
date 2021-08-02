@@ -15,7 +15,7 @@ public class Item {
 	public String toString() {
 		// Write your codes here
 
-		return String.format("%-10s %-30s %-10s %-10s %-20d\n", getAssetTag(), getDescription(),
+		return String.format("%-10s %-20s %-10s %-10s", getAssetTag(), getDescription(),
 				ResourceCentre.showAvailability(getIsAvailable()), getDueDate());
 //		return null;
 	}
