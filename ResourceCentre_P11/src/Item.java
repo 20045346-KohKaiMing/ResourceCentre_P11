@@ -11,11 +11,15 @@ public class Item {
 		this.dueDate = "";
 		this.isAvailable = true;
 	}
+
 	public String toString() {
-		
 		// Write your codes here
-		return null;
+
+		return String.format("%-10s %-30s %-10s %-10s %-20d\n", getAssetTag(), getDescription(),
+				ResourceCentre.showAvailability(getIsAvailable()), getDueDate());
+//		return null;
 	}
+
 	public String getAssetTag() {
 		return assetTag;
 	}
@@ -39,5 +43,5 @@ public class Item {
 	public void setIsAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
-}
 
+}
